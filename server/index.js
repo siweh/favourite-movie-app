@@ -2,7 +2,6 @@ const express = require('express');
 const PgPromise = require("pg-promise");
 // const bodyParser = require('body-parser');
 const cors = require('cors');
-const bcrypt = require('bcrypt');
 require('dotenv').config();
 const API = require('./api');
 
