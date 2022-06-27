@@ -1,0 +1,15 @@
+language: node_js
+
+node_js:
+- 16.14.0
+
+env:
+- DATABASE_URL=postgres://@localhost:5432/favorite_movie_app
+
+before_script:
+- npm install
+- psql -c 'create database favorite_movie_app;' -U postgres
+- psql -U postgres -d favorite_movie_app -a -f ./sql/user-movie.sql
+
+services:
+- postgresql
