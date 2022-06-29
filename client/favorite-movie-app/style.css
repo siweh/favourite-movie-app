@@ -6,3 +6,94 @@
   color: #2c3e50;
   margin-top: 60px;
 }
+
+body{
+  background-color: rgb(135, 195, 222);
+}
+
+.inputField {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid rgb(190, 231, 238);
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.loginBtn {
+  text-align: center;
+  align-items: center;
+  background-color: #259bca;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 99%;
+  border-radius: 10px;
+}
+
+.registerBtn {
+  text-align: center;
+  align-items: center;
+  background-color: #259bca;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 99%;
+  border-radius: 10px;
+}
+
+/* search style */
+
+body {
+  font-family: Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.searchInput{
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+.searchBtn{
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+.searchBtn:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+search::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* end of search style */
+
+button:hover {
+  background-color: #4f8f87;
+}

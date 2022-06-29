@@ -4,15 +4,16 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Vite App</title>
   </head>
   <body>
-    <div x-data="{ open: false, register: false, login: false, show_love_counter: false, show_login_registration: true, qoute: false}">
+    <div x-data="{ open: false, register: false, login: false, show_movies: false, show_login_registration: true}">
     
-      <div x-data="loginData" class="quoteApp" x-show="show_login_registration = showLoginRegister()">    <!-- <div x-data=" login: false, register: false, , startUpPage: false"> -->
+      <div x-data="loginData" class="quoteApp" x-show = showLoginRegister()>    <!-- <div x-data=" login: false, register: false, , startUpPage: false"> -->
 
         <br />
-        <h1 style="text-align: center">Welcome To Hearts App</h1>
+        <h1 style="text-align: center">Welcome To Movies App</h1>
         <br />
         <div>
           <!-- <div
@@ -30,47 +31,60 @@
           </h2>
           <br />
           <button
-            type="submit"
-            class="registerBtn"
-            @click="register = ! register, login = false"
-          >
-            Register
-          </button>
-          <br />
-          <br />
-          <button type="submit" class="loginBtn" @click="login = ! login, register = false">
-            Login
-          </button>
+          type="submit"
+          class="registerBtn"
+          @click="register = ! register, login = false"
+        >
+          Register
+        </button>
+        <br />
+        <br />
+        <button type="submit" class="loginBtn" @click="login = ! login, register = false">
+          Login
+        </button>
         
       </div>
       
       <div x-data="registerData" class="quoteApp" x-show="register">
         <h1 style="text-align: center">Please Register</h1>
         <hr />
-        <label for="email"><b>Email</b></label>
+        <label for="email"><b>Firstname</b></label>
         <input
           type="text"
-          placeholder="Enter Email"
-          name="email"
-          id="email"
-          x-model="email"
+          class="inputField"
+          placeholder="Enter Firstname"
+          name="firstname"
+          id="firstname"
+          x-model="firstname"
+          required
+        />
+        <label for="email"><b>Lastname</b></label>
+        <input
+          type="text"
+          class="inputField"
+          placeholder="Enter Lastname"
+          name="lastname"
+          id="lastname"
+          x-model="lastname"
           required
         />
         <label for="username"><b>Username</b></label>
         <input
           type="text"
+          class="inputField"
           placeholder="Enter Username"
           name="username"
-          id="username"
+          id="r_username"
           x-model="username"
           required
         />
         <label for="psw"><b>Password</b></label>
         <input
           type="password"
+          class="inputField"
           placeholder="Enter Password"
           name="hash_password"
-          id="psw"
+          id="pswd"
           x-model="hash_password"
           required
         />
@@ -78,7 +92,7 @@
         <button
           type="submit"
           class="registerBtn"
-          @click="registerApiEndpoint(), show_login_registration = showLoginRegister(), show_love_counter = showLoveCounter()"
+          @click="registerApiEndpoint()"
           style="text-align: center"
         >
           Register
@@ -93,6 +107,7 @@
         <label for="email"><b>Username</b></label>
         <input
           type="text"
+          class="inputField"
           placeholder="Enter Username"
           name="username"
           id="username"
@@ -102,6 +117,7 @@
         <label for="psw"><b>Password</b></label>
         <input
           type="password"
+          class="inputField"
           placeholder="Enter Password"
           name="password"
           id="psw"
@@ -112,13 +128,45 @@
         <button
           type="submit"
           class="loginBtn"
-          @click="loginApiEndpoint(), show_login_registration = showLoginRegister(), show_love_counter = showLoveCounter(), info_message"
+          @click="loginApiEndpoint(), show_login_registration = showLoginRegister()"
           style="text-align: center"
         >
           Login
         </button>
       </div>
+      <div x-data="moviesData" x-show="show_movies = showMovieList(), login = false">
+        <h1 style="text-align: center">Find the best movies of your choice</h1>
+        <!-- <form class="example" action="/action_page.php">
+          <input type="text" placeholder="Search.." name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form> -->
+        <input
+          type="text"
+          class="searchInput"
+          placeholder="Search a movie..."
+          name="search"
+          id="movie_name"
+          x-model="movie_name"
+          required
+        />
+        <button
+          type="submit"
+          class="searchBtn"
+          @click="movieList()"
+          style="text-align: center"
+        ><i class="fa fa-search"></i></button>
+        <br>
+        <button
+          type="submit"
+          class="loginBtn"
+          @click="logOut(), show_login_registration = showLoginRegister()"
+          style="text-align: center"
+        >
+          Logout
+        </button>
+      </div>
     </div>
+    <br>
     <hr />
     <div id="app"></div>
     <script type="module" src="/main.js"></script>
