@@ -20,7 +20,9 @@ export default function LoginApiEndpoint(){
                     this.info_message = 'Please fill in all the required fields';
                     this.error = true;
                 }else{
-                    fetch(`http://localhost:3002/api/login?username=${username}&password=${password}`, {
+                    const URL_BASE = import.meta.env.VITE_SERVER_URL;
+                    const url = `${URL_BASE}/api/login?username=${username}&password=${password}`
+                    fetch(url, {
                         // Adding method type
                         method: "POST",
                         

@@ -13,7 +13,9 @@ export default function RegisterApiEndpoint() {
     lastname: "",
     registerApiEndpoint() {
         if(this.firstname && this.lastname && this.username && this.hash_password){
-            axios.post("http://localhost:3002/api/register", {
+            const URL_BASE = import.meta.env.VITE_SERVER_URL;
+            const url = `${URL_BASE}/api/register`
+            axios.post(url, {
                 firstname: this.firstname,
                 hash_password: this.hash_password,
                 username: this.username,

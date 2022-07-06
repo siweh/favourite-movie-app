@@ -19,7 +19,8 @@ export default function Movies(){
                 this.info_message = 'Please fill in all the required fields';
                     this.error = true;
             }else{
-                var url = `http://localhost:3002/movies?movie_name=${this.movie_name}`
+                const URL_BASE = import.meta.env.VITE_SERVER_URL;
+                const url = `${URL_BASE}/movies?movie_name=${this.movie_name}`
                 fetch(url)
                         .then(r => r.json())
                         .then(result => this.movies = result.data)
@@ -36,7 +37,9 @@ export default function Movies(){
             const token = localStorage.getItem('token');
 
             if (token !== undefined || token !== null){
-                fetch(`http://localhost:3002/playlist`, {
+                const URL_BASE = import.meta.env.VITE_SERVER_URL;
+                const url = `${URL_BASE}/playlist`
+                fetch(url, {
                         // Adding method type
                         method: "POST",
                         
@@ -65,7 +68,9 @@ export default function Movies(){
             const token = localStorage.getItem('token');
 
             if (token !== undefined || token !== null){
-                fetch(`http://localhost:3002/api/playlist${token}`)
+                const URL_BASE = import.meta.env.VITE_SERVER_URL;
+                const url = `${URL_BASE}/api/playlist?${token}`
+                fetch(url)
                     .then(r => r.json())
                     .then(result => console.log(result))
                     .catch(error => console.error(error))
@@ -82,7 +87,7 @@ export default function Movies(){
                 return true
             }    
         },
-        
+
         logOut(){
             localStorage.clear();
             location.reload();
