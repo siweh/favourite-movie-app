@@ -8,23 +8,19 @@
     <title>Vite App</title>
   </head>
   <body>
-    <div x-data="{ open: false, register: false, login: false, show_movies: false, show_login_registration: true}">
+    <div x-data="{ open: false, register: false, login: false, show_movies: false, show_login_registration: true, movies: [], playlist: []}">
     
       <div x-data="loginData" class="quoteApp" x-show = showLoginRegister()>    <!-- <div x-data=" login: false, register: false, , startUpPage: false"> -->
 
         <br />
         <h1 style="text-align: center">Welcome To Movies App</h1>
-        <br />
-        <div>
-          <!-- <div
+          <div
         class="message"
         x-bind:class="error ? 'error' : ''"
         x-text="info_message"
         x-show="info_message != ''"
         x-transition
       ></div>
-      <hr> -->
-        </div>
         
           <h2 style="text-align: center">
             <b>Don't have an account? Register or Login below</b>
@@ -136,10 +132,14 @@
       </div>
       <div x-data="moviesData" x-show="show_movies = showMovieList(), login = false">
         <h1 style="text-align: center">Find the best movies of your choice</h1>
-        <!-- <form class="example" action="/action_page.php">
-          <input type="text" placeholder="Search.." name="search">
-          <button type="submit"><i class="fa fa-search"></i></button>
-        </form> -->
+        <br>
+        <div
+        class="message"
+        x-bind:class="error ? 'error' : ''"
+        x-text="info_message"
+        x-show="info_message != ''"
+        x-transition
+      ></div>
         <input
           type="text"
           class="searchInput"
@@ -152,9 +152,10 @@
         <button
           type="submit"
           class="searchBtn"
-          @click="movieList()"
+          @click="movies = movieList()"
           style="text-align: center"
         ><i class="fa fa-search"></i></button>
+        <br>
         <br>
         <button
           type="submit"
@@ -164,6 +165,20 @@
         >
           Logout
         </button>
+        <br>
+        <br>
+        <div class="searchResults">
+          <div class="movies">
+            <template x-for="movie in movies">
+                <div class="movie">
+                  <span x-text="movie.movie_name"></span>
+                  <!-- <template x-if="movie.movie_url"> -->
+                    <img :src="movie.movie_url"  alt="movie image" width="200" height="200" />
+                  <button @click="addToPlaylist(movie)">Add to favorites</button>
+                </div>
+            </template>
+          </div>
+        </div>
       </div>
     </div>
     <br>

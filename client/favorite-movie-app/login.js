@@ -9,8 +9,14 @@ export default function LoginApiEndpoint(){
         error: false,
         user: {username: '',password: ''},
         loginApiEndpoint(){
+
+            setTimeout(() =>  { 
+                this.info_message = '';
+                this.error = false;
+              }, 3000);
+
             const { username, password} = this.user;
-                if (!this.user.username && !this.user.password){
+                if (this.user.username === '' && !this.user.password === ''){
                     this.info_message = 'Please fill in all the required fields';
                     this.error = true;
                 }else{
@@ -49,7 +55,6 @@ export default function LoginApiEndpoint(){
         },
         showLoginRegister(){
             const token = localStorage.getItem('token');
-
             if (token === undefined || token === null){
                 return true
             }else{

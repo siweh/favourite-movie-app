@@ -21,6 +21,12 @@ const config = {
 	// ssl: { rejectUnauthorized : false}
 };
 
+if (process.env.NODE_ENV == 'production') {
+	config.ssl = {
+		rejectUnauthorized : false
+	}
+ }
+
 const pgp = PgPromise({});
 const db = pgp(config);
 
