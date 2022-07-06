@@ -32,7 +32,7 @@ const db = pgp(config);
 
 API(app, db);
 
-let port = process.env.port || 3002;
+let port = process.env.port || 3012;
 
 app.listen(port, function(){
     console.log('Running for my life on: ', port);
