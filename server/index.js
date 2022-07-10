@@ -16,15 +16,18 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(bodyParser.urlencoded({ extended: true }))
 
 const config = {
-	connectionString: process.env.DATABASE_URL || 'postgres://sane:sane123@localhost:5432/favorite_movie_app',
+	connectionString: 'postgres://sane:sane123@localhost:5432/favorite_movie_app',
 	max: 30,
 	// ssl: { rejectUnauthorized : false}
 };
+
+
 
 if (process.env.NODE_ENV == 'production') {
 	config.ssl = {
 		rejectUnauthorized : false
 	}
+	config.connectionString =  process.env.DATABASE_URL
  }
 
 const pgp = PgPromise({});
